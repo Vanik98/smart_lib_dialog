@@ -1,16 +1,20 @@
 # smart_lib_dialog
 
-A new Flutter project.
+A smart, easy-to-use dialog library for Flutter.
 
-## Getting Started
+## ✨ Features
 
-This project is a starting point for a Flutter application.
+- 📦 Open dialogs **from anywhere**, even **without BuildContext**.
+- ⚡ Simple and clean API to show dialogs.
+- ✅ Support for **positive** and **negative** buttons.
+- 📝 Add custom **title**, **description**, and button texts.
+- 🧠 Smart internal handling — **no boilerplate** or extra setup needed.
+- 🧩 Designed to be lightweight and highly customizable.
 
-A few resources to get you started if this is your first Flutter project:
+## 🚀 Getting Started
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+Add dependency in your `pubspec.yaml`:
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+```yaml
+dependencies:
+  smart_lib_dialog:
