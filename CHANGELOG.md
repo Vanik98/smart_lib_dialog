@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.0.3] - 2025-05-02
+
+### Added
+- Added usage examples to `example/lib/main.dart` to demonstrate library features.
+
 ## [1.0.2] - 2025-05-02
 
 ### Added
