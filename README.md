@@ -277,7 +277,7 @@ SmartDialogManager.showDialog(
 
 ## 📦 Contributing & Feedback
 
-Contributions are welcome! For feature requests, bugs, or improvements, [open an issue](https://github.com/yourusername/smart_lib_dialog/issues) or submit a PR.
+Contributions are welcome! For feature requests, bugs, or improvements, [open an issue](https://github.com/vanik98/smart_lib_dialog/issues) or submit a PR.
 
 ---
 

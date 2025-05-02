@@ -1,6 +1,6 @@
 name: smart_lib_dialog
 description: A Flutter library that provides custom dialogs with back button interception.
-version: 1.0.1
+version: 1.0.2
 
 homepage: https://github.com/vanik98/smart_lib_dialog
 repository: https://github.com/vanik98/smart_lib_dialog

@@ -2,9 +2,23 @@ import 'package:flutter/material.dart';
 import 'package:smart_lib_dialog/dialog/smart_dialog_params.dart';
 import '../base/utils/back_inspector_mixin.dart';
 
+/// A customizable dialog widget that supports title, description, buttons, and custom content.
+///
+/// This dialog can be displayed globally in the app without requiring a BuildContext,
+/// and supports styling through [SmartDialogParams].
 class SmartDialogWidget extends StatefulWidget {
+  /// Configuration for the dialog's appearance and behavior.
+  ///
+  /// If null, the dialog may use default styling from [SmartDialogManager.init].
   final SmartDialogParams? dialogParams;
 
+  /// Creates a new SmartDialogWidget with the given configuration.
+  ///
+  /// The [dialogParams] parameter controls:
+  /// - Dialog colors (background, foreground, border)
+  /// - Text styles for title/description/buttons
+  /// - Button styles and labels
+  /// - Callback actions for buttons and dismiss events
   const SmartDialogWidget({
     super.key,
     this.dialogParams
@@ -18,11 +32,13 @@ class _SmartDialogErrorWidgetState extends State<SmartDialogWidget> with BackIns
   @override
   void initState() {
     super.initState();
+    // Register this dialog with the back button inspector
     addInspector();
   }
 
   @override
   void dispose() {
+    // Unregister when dialog is disposed
     removeInspector();
     super.dispose();
   }
@@ -30,11 +46,12 @@ class _SmartDialogErrorWidgetState extends State<SmartDialogWidget> with BackIns
   @override
   Widget build(BuildContext context) {
     final params = widget.dialogParams;
+
     return GestureDetector(
-      onTap: (){
-        params?.onOutClick?.call();
-      },
+      // Handle tap outside the dialog to trigger onOutClick callback
+      onTap: () => params?.onOutClick?.call(),
       child: Container(
+        // Fullscreen overlay with semi-transparent background
         color: params?.foregroundColor ?? Colors.white.withOpacity(0.8),
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
@@ -42,8 +59,10 @@ class _SmartDialogErrorWidgetState extends State<SmartDialogWidget> with BackIns
           child: Padding(
             padding: const EdgeInsets.only(left: 32, right: 32),
             child: GestureDetector(
+              // Prevents taps from propagating to the overlay
               onTap: () {},
               child: Container(
+                // Dialog content container with rounded corners
                 decoration: BoxDecoration(
                   color: params?.backgroundColor ?? Colors.white,
                   borderRadius: BorderRadius.circular(12.0),
@@ -56,47 +75,63 @@ class _SmartDialogErrorWidgetState extends State<SmartDialogWidget> with BackIns
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
+                    // Dialog Header
                     Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
-                        if (params?.title != null && params!.title!.isNotEmpty && params.onOnClose != null) const SizedBox(width: 48),
+                        // Title (centered)
                         if (params?.title != null && params!.title!.isNotEmpty)
                           Expanded(
                             child: Center(
                               child: Text(
                                 params.title!,
-                                style: params.titleTextStyle ?? TextStyle(fontWeight: FontWeight.bold),
+                                style: params.titleTextStyle ?? const TextStyle(fontWeight: FontWeight.bold),
                               ),
                             ),
                           ),
-                        if(params?.onOnClose != null)IconButton(
+                        // Close button (if provided)
+                        if (params?.onOnClose != null) IconButton(
                           onPressed: params?.onOnClose,
                           icon: Icon(Icons.close, color: params?.closeIconColor),
                         ),
                       ],
                     ),
+
+                    // Description Text
                     if (params?.description != null && params!.description!.isNotEmpty)
                       Text(
                         params.description!,
                         style: params.descriptionTextStyle,
                       ),
+
+                    // Custom Widget (if provided)
                     if (params?.customWidget != null) params!.customWidget!,
+
+                    // Positive Action Button
                     if (params?.positiveButtonText != null)
                       Padding(
                         padding: const EdgeInsets.only(top: 20),
                         child: FilledButton(
                           onPressed: params?.onPositiveButtonPressed,
                           style: params?.positiveButtonStyle,
-                          child: Text(params!.positiveButtonText!,style: params.positiveButtonTextStyle),
+                          child: Text(
+                            params!.positiveButtonText!,
+                            style: params.positiveButtonTextStyle,
+                          ),
                         ),
                       ),
+
+                    // Negative Action Button
                     if (params?.negativeButtonText != null)
                       Padding(
                         padding: const EdgeInsets.only(top: 20),
                         child: FilledButton(
                           onPressed: params?.onNegativeButtonPressed,
                           style: params?.negativeButtonStyle,
-                          child: Text(params!.negativeButtonText!,style: params.negativeButtonTextStyle,),
+                          child: Text(
+                            params!.negativeButtonText!,
+                            style: params.negativeButtonTextStyle,
+                          ),
                         ),
                       ),
                   ],

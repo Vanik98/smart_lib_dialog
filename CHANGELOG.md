@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.0.2] - 2025-05-02
+
+### Added
+- Added documentation comments (dartdoc) to public API elements to improve code clarity and pub.dev score.
+
 ## [1.0.1] - 2025-05-02
 
 ### Changed

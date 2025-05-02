@@ -1,9 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:smart_lib_dialog/loading/smart_loading_params.dart';
 
-
+/// A customizable loading indicator dialog with animated spinner.
+///
+/// Displays a full-screen overlay with a rotating loading icon that can be
+/// customized through [SmartLoadingParams].
 class SmartLoadingWidget extends StatefulWidget {
+  /// Configuration for the loading indicator's appearance.
   final SmartLoadingParams? loadingParams;
+
+  /// Creates a loading dialog with optional custom styling.
+  ///
+  /// The [loadingParams] parameter controls:
+  /// - Background color via [SmartLoadingParams.backgroundColor]
+  /// - Custom icon via [SmartLoadingParams.icon]
   const SmartLoadingWidget({super.key, this.loadingParams});
 
   @override
@@ -16,17 +26,20 @@ class _SmartLoadingWidgetState extends State<SmartLoadingWidget> with SingleTick
   @override
   void initState() {
     super.initState();
+    // Create and start infinite rotation animation
     _controller = AnimationController(
-      vsync: this,
-      duration: const Duration(seconds: 1),
-    )..repeat();
+      vsync: this, // Required for animation timing
+      duration: const Duration(seconds: 1), // Full rotation duration
+    )..repeat(); // Start continuous rotation
   }
 
   @override
   Widget build(BuildContext context) {
     final params = widget.loadingParams;
+
     return Stack(
       children: [
+        // Fullscreen background overlay
         GestureDetector(
           child: Container(
             color: params?.backgroundColor ?? Colors.white,
@@ -34,11 +47,12 @@ class _SmartLoadingWidgetState extends State<SmartLoadingWidget> with SingleTick
             height: MediaQuery.of(context).size.height,
           ),
         ),
-        //  content
+        // Centered loading indicator
         Center(
           child: RotationTransition(
+            // Spinning animation using rotation turns
             turns: _controller,
-            child:params?.icon ?? Icon(Icons.refresh,size: 35,),
+            child: params?.icon ?? const Icon(Icons.refresh, size: 35),
           ),
         ),
       ],
@@ -47,6 +61,7 @@ class _SmartLoadingWidgetState extends State<SmartLoadingWidget> with SingleTick
 
   @override
   void dispose() {
+    // Clean up animation resources
     _controller.dispose();
     super.dispose();
   }
