@@ -1,9 +1,0 @@
-# Changelog
-
-## [1.0.0] - 2025-04-29
-
-- Initial release of `smart_lib_dialog`.
-- Dialogs can be shown globally, even without BuildContext.
-- Simple API for adding title, description, positive and negative buttons.
-- Built-in loading dialog support.
-- Highly customizable and well-structured.
