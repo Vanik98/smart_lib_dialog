@@ -65,7 +65,7 @@ class SmartDialogParams {
   /// Creates a [SmartDialogParams] instance.
   ///
   /// See [SmartDialogManager.showDialog] for usage.
-  SmartDialogParams({this.backgroundColor, this.foregroundColor, this.borderColor, this.title, this.titleTextStyle, this.closeIconColor, this.descriptionTextStyle, this.positiveButtonTextStyle, this.positiveButtonStyle, this.negativeButtonTextStyle, this.negativeButtonStyle, required this.description, this.customWidget, this.positiveButtonText, this.negativeButtonText, this.onPositiveButtonPressed, this.onNegativeButtonPressed, this.onOutClick, this.onOnClose});
+  SmartDialogParams({this.backgroundColor, this.foregroundColor, this.borderColor, this.title, this.titleTextStyle, this.closeIconColor, this.descriptionTextStyle, this.positiveButtonTextStyle, this.positiveButtonStyle, this.negativeButtonTextStyle, this.negativeButtonStyle,  this.description, this.customWidget, this.positiveButtonText, this.negativeButtonText, this.onPositiveButtonPressed, this.onNegativeButtonPressed, this.onOutClick, this.onOnClose});
 
   /// Copies this instance with updated values.
   ///

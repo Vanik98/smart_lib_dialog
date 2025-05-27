@@ -49,7 +49,11 @@ class _SmartDialogErrorWidgetState extends State<SmartDialogWidget> with BackIns
 
     return GestureDetector(
       // Handle tap outside the dialog to trigger onOutClick callback
-      onTap: () => params?.onOutClick?.call(),
+      onTap: (){
+        if(params?.onOutClick != null){
+          params!.onOutClick!();
+        }
+      },
       child: Container(
         // Fullscreen overlay with semi-transparent background
         color: params?.foregroundColor ?? Colors.white.withOpacity(0.8),

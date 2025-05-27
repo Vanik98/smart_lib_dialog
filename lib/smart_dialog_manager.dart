@@ -124,10 +124,10 @@ class SmartDialogManager with StatusCallbackMixin, TimerMixin, OverlayMixin {
         negativeButtonText: params?.negativeButtonText,
         onPositiveButtonPressed: params?.onPositiveButtonPressed ?? dismiss,
         onNegativeButtonPressed: params?.onNegativeButtonPressed ?? dismiss,
-        onOutClick: isClosable ? dismiss :  params?.onOutClick,
+        onOutClick: isClosable ? dismiss : (){},
         onOnClose: params?.onOnClose,
       ) ??
-          params,
+          params?.copyWith( onOutClick: isClosable ? dismiss : (){}),
     );
 
     return _instance._show(widget: dialogWidget, duration: duration);
