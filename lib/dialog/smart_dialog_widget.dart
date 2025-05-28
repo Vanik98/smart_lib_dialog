@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:smart_lib_dialog/dialog/smart_dialog_params.dart';
+
 import '../base/utils/back_inspector_mixin.dart';
 
 /// A customizable dialog widget that supports title, description, buttons, and custom content.
@@ -115,12 +116,15 @@ class _SmartDialogErrorWidgetState extends State<SmartDialogWidget> with BackIns
                     if (params?.positiveButtonText != null)
                       Padding(
                         padding: const EdgeInsets.only(top: 20),
-                        child: FilledButton(
-                          onPressed: params?.onPositiveButtonPressed,
-                          style: params?.positiveButtonStyle,
-                          child: Text(
-                            params!.positiveButtonText!,
-                            style: params.positiveButtonTextStyle,
+                        child: SizedBox(
+                          width: double.infinity,
+                          child: FilledButton(
+                            onPressed: params?.onPositiveButtonPressed,
+                            style: params?.positiveButtonStyle,
+                            child: Text(
+                              params!.positiveButtonText!,
+                              style: params.positiveButtonTextStyle,
+                            ),
                           ),
                         ),
                       ),
@@ -129,12 +133,15 @@ class _SmartDialogErrorWidgetState extends State<SmartDialogWidget> with BackIns
                     if (params?.negativeButtonText != null)
                       Padding(
                         padding: const EdgeInsets.only(top: 20),
-                        child: FilledButton(
-                          onPressed: params?.onNegativeButtonPressed,
-                          style: params?.negativeButtonStyle,
-                          child: Text(
-                            params!.negativeButtonText!,
-                            style: params.negativeButtonTextStyle,
+                        child: SizedBox(
+                          width: double.infinity,
+                          child: FilledButton(
+                            onPressed: params?.onNegativeButtonPressed,
+                            style: params?.negativeButtonStyle,
+                            child: Text(
+                              params!.negativeButtonText!,
+                              style: params.negativeButtonTextStyle,
+                            ),
                           ),
                         ),
                       ),
